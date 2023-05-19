@@ -4,6 +4,18 @@ import os
 my_dir = os.path.dirname(os.path.abspath(__file__))
 data = pd.read_csv(f'{my_dir}/data/covid.csv')
 
-print(data.head())
-
-print(sum(data['actual_diagnostic'].values))
+infected_ppl = []
+males = 0
+females = 0
+for i in range(data.shape[0]):
+    if data.loc[i]['actual_diagnostic'] == 1: 
+        infected_ppl.append(data.loc[i])
+        males += data.loc[i]['sex'] == 0
+        females += data.loc[i]['sex'] == 1
+num_females = sum(data['sex'])
+num_males = data.shape[0] - num_females
+print(sum(data['actual_diagnostic']), "test kits needed")
+print(sum(data['actual_diagnostic']), "test kits needed")
+print(num_males, "tested and", males, 'infected = ', males / num_males)
+print(num_females, "tested and", females, 'infected = ', females / num_females)
+print("Females are more likely to be infected")
