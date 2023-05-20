@@ -14,6 +14,7 @@ for i in range(data.shape[0]):
         females += data.loc[i]['sex'] == 1
 num_females = sum(data['sex'])
 num_males = data.shape[0] - num_females
+print(data.loc[(data['sex'] == 1) & (data['actual_diagnostic'] == 1)])
 print(sum(data['actual_diagnostic']), "test kits needed")
 print(sum(data['actual_diagnostic']), "test kits needed")
 print(num_males, "tested and", males, 'infected = ', males / num_males)
